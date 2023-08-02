@@ -121,7 +121,8 @@ a {
 
 .coaching-payment {
  padding: 20px;
- float: right;
+ /* float: right; */
+ /* align-items: center; */
  color: var(--body-color);
  background-color: var(--heading-color);
  display: flex;
@@ -245,10 +246,10 @@ a {
 }
 
 
-.coaching-conatiner {
+/* .coaching-conatiner {
  margin: 10px;
  float: left;
-}
+} */
 
 .coaching-payment-process {
  padding: 20px;
@@ -258,7 +259,7 @@ a {
  flex-direction: column;
  box-shadow: 2px;
  border-radius: 1rem;
- margin: 20px;
+ /* margin: 20px; */
  height: auto;
  text-align: center;
  text-transform: uppercase;
@@ -275,10 +276,34 @@ a {
 }
 
 @media (max-width: 769px) {
+ .program {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  margin-left: 0;
+ }
+
+  .prog-details {
+   width: 90%;
+  }
+ 
+  .payment {
+   width: 90%;
+    margin-top: 0px;
+     margin-right: 0px;
+     align-items: center;
+  }
  .coaching {
   display: flex;
   flex-direction: column-reverse;
   height: auto;
+ }
+
+ .coaching-payment-process {
+  width: 90%;
+ }
+ .coaching-payment {
+  width: 90%;
  }
 
  .coaching-payment h2 {
