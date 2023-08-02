@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <link rel="stylesheet" href="style.css">
+ <script src="https://unpkg.com/intasend-inlinejs-sdk@3.0.2/build/intasend-inline.js"></script>
+</head>
+
+<body>
+
+ <section class="program">
+
+  <div class="prog-details">
+
+   <img src="/anxiety.jpg" width="" height="" id="MainImg">
+
+
+   <div class="single-prog-details">
+    <h1>Overcoming Anxiety and Stress <br>(4 weeks)</h1>
+    <br>
+    <h2>KES 12,400.00</h2>
+    <br>
+    <h2>Product Details</h2>
+    <br>
+    <p><span>Proven Techniques: </span>Learn effective, research-backed strategies to manage and reduce anxiety and
+     stress in your everyday life.</p>
+    <p><span>Personalized Approach: </span>Receive tailored guidance and support to address your unique stress triggers
+     and
+     develop personalized coping mechanisms.</p>
+    <p><span>Practical Tools: </span>Gain a toolbox of practical techniques and exercises that can be easily integrated
+     into your daily routine for immediate
+     relief.</p>
+    <p><span>Lasting Transformation: </span>Discover long-term strategies to build resilience and cultivate a more
+     balanced and peaceful mindset.</p>
+    <br>
+    <h2>Program Summary: </h2>
+    <br>
+    <ol>
+     <li>30-minute online discovery session</li>
+     <li>4 weekly 2-hour online sessions</li>
+     <li>In-session exercises</li>
+     <li>Out-of-session exercises with feedback timelines</li>
+     <li>Empowering conversations and guidance on overcoming anxiety and stressli</li>
+     <li>Free to call, text, WhatsApp, or email the coach during the program life.</li>
+    </ol>
+
+    <br>
+
+    <p><span>*** PLEASE READ: </span>Please enter the email address you would like to receive any
+     material
+     from GrowHub Coaching Services. </p>
+    <p>
+     Please check off the box that says "I have read and agree to the terms and conditions..." without
+     checking
+     this box you WILL NOT receive any content.</p>
+
+    <p> Once you complete the tasks you will receive an email of your product from GrowHub Coaching Services within
+     24hrs</p>
+
+    <br>
+    <p> <span>Thank you, GHCS Team.
+     </span></p>
+   </div>
+  </div>
+
+  <div class="payment">
+
+   <div class="coaching-container">
+    <div class="coaching-payment-process">
+     <h2>payment process</h2>
+     <p>1. go to m-pesa menu
+      <br>
+      2. click on lipa na m-pesa
+      <br>
+      3. click on pay bill
+      <br>
+      4. enter business number <b style="color: red;">(522522)</b>
+      <br>
+      5. enter account number <b style="color: red;">(1315146789)</b>
+      <br>
+      6. enter amount (specific to your product)
+      <br>
+      7. enter your m-pesa pin
+      <br>
+      8. wait for the confirmation m-pesa messsage
+      <br>
+      9. enter the transaction code below
+     </p>
+     <!-- <button class="btn btn-primary btn-lg intaSendPayButton" data-amount="10" data-currency="KES">Pay KES
+      20,400</button> -->
+    </div>
+   </div>
+
+   <div class="coaching-payment">
+    <h2>confirm payment here</h2>
+    <form name="submit-to-google-sheet">
+     <input type="text" name="name" id="name" placeholder="ENTER YOUR FULL NAME" required>
+     <input type="email" name="email" id="email" placeholder="ENTER YOU EMAIL" required>
+     <input type="text" name="transaction" id="tCode" placeholder="TRANSACTION CODE" required>
+     <input type="submit" step="" value="confirm payment" class="input-submit" id="sbt" onclick="message()">
+    </form>
+    <br>
+    <p><input type="checkbox" name="read" id="abc" onclick="checkMe()">I have read and agree to the <a
+      href="./termsandconditions.html" target="_blank">terms and
+      agreement </a>set forth by Grow Hub Coaching consultant</p>
+    <br>
+    <div class="message">
+     <div class="success" id="success">Sent! Receipt and Product will be sent in your email.</div>
+     <div class="danger" id="danger">Fields can't be Empty!</div>
+    </div>
+   </div>
+
+
+  </div>
+
+ </section>
+
+ <SCRipt>
+  let customBtnObj = new window.IntaSend({
+   publicAPIKey: "REPLACE-WITH-YOUR-PUBLISHABLE-KEY",
+   live: false // set to true when going live
+  })
+  document.getElementById("customBtn").onclick = () => {
+   customBtnObj.run({
+    amount: 10,
+    currency: "USD",
+    email: "john@doe.com",
+    first_name: "John",
+    last_name: "Doe",
+    country: "US"
+   })
+    .on("COMPLETE", () => alert("Do something on success"))
+    .on("FAILED", () => alert("Do something on failure"))
+    .on("IN-PROGRESS", () => console.log("Payment in progress status"))
+  }
+ </SCRipt>
+
+
+ <script>
+
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwKT_f0yimSQ6k7TlBZ-0ViGhg8vOzlDOyiL6RMat9vMEVTENCiod1xVdpbf3lLu4nJ/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+   e.preventDefault()
+   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    .then(response => console.log('Success!', response))
+    .catch(error => console.error('Error!', error.message))
+  })
+
+
+
+  function message() {
+   var name = document.getElementById('name');
+   var email = document.getElementById('email');
+   var product = document.getElementById('product');
+   var tCode = document.getElementById('tCode');
+   const success = document.getElementById('success');
+   const danger = document.getElementById('danger');
+
+   if (name.value === '' || email.value === '' || tCode.value === '') {
+    danger.style.display = 'block';
+   } else {
+    setTimeout(() => {
+     name.value = '';
+     email.value = '';
+     tCode.value = '';
+    }, 1000);
+
+    success.style.display = 'block';
+   }
+
+   setTimeout(() => {
+    danger.style.display = 'none';
+    success.style.display = 'none';
+   }, 4000);
+
+  }
+ </script>
+
+
+ <script src="script.js"></script>
+</body>
+
+</html>
